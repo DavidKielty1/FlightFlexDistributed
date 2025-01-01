@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+
+package flightflex;
+
+option java_package = "com.example.FlightFlex.grpc";
+option java_outer_classname = "FlightFlexServiceProto";
+
+service AdRecommendationsService {
+    rpc GetAdRecommendations (UserIdRequest) returns (AdRecommendationsResponse);
+}
+
+service AlternativeDateService {
+    rpc GetAlternativeDate (UserIdRequest) returns (AlternativeDateResponse);
+}
+
+message UserIdRequest {
+    int32 user_id = 1;
+}
+
+message AdRecommendationsResponse {
+    repeated string recommended_ads = 1;
+}
+
+message AlternativeDateResponse {
+    string alternative_date = 1;
+}
