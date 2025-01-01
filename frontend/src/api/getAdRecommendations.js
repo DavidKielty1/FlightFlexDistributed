@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://backend:8080"; // Replace with your backend's REST gateway URL
+const BASE_URL = "http://localhost:8080"; // Replace with your backend's REST gateway URL
 
 // Fetch ad recommendations
 export async function getAdRecommendations(userId) {
@@ -10,7 +10,10 @@ export async function getAdRecommendations(userId) {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching ad recommendations:", error);
+    console.error(
+      "Error fetching ad recommendations:",
+      error.response || error.message
+    );
     throw error;
   }
 }

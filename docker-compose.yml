@@ -29,15 +29,32 @@ services:
       - "5432:5432"
     networks:
       - flightflex-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
   frontend:
     build:
       context: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     ports:
-      - "3000:80"
+      - "3000:3000" # Expose React development server
+
+    ## non-hot-reloading
+    # ports:
+    #   - "3000:80"
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Enable polling for file changes
+    command: ["npm", "start"]
     networks:
       - flightflex-network
 
 networks:
   flightflex-network:
+    name: flightflex-network
     driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local

@@ -16,17 +16,19 @@ Java Springboot. gRPC with postgresQL.
 
 React. HTTP Restful requests.
 
-#### Setup:
+## Setup:
 
-<!-- Entire app -->
-<!-- docker-compose up --build -->
+### Entire App:
 
-Local:
+docker-compose up --build
+
+### Local:
+
 docker-compose up database
 
 cd ./backend
 ./gradlew clean build
-java -jar build/libs/FlightFlex-1.0-SNAPSHOT.jar
+java -jar build/libs/FlightFlex.jar
 
 cd ./frontend
 npm i
