@@ -1,44 +1,43 @@
-# version: "3.8"
-# services:
-#   postgres:
-#     image: postgres:latest
-#     container_name: postgres-container
-#     environment:
-#       POSTGRES_USER: flight
-#       POSTGRES_PASSWORD: flex
-#       POSTGRES_DB: flightflexdb
-#     ports:
-#       - "5432:5432"
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
-#       - ./database_backup.sql:/docker-entrypoint-initdb.d/init.sql
-#     healthcheck:
-#       test: ["CMD", "pg_isready", "-U", "flight"]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: "jdbc:postgresql://database:5432/flightflexdb"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/flightflexdb"
+      SPRING_DATASOURCE_USERNAME: "postgres"
+      SPRING_DATASOURCE_PASSWORD: "post"
+    depends_on:
+      - database
+    networks:
+      - flightflex-network
 
-#   grpc_java_server:
-#     build:
-#       context: ./Backend
-#       dockerfile: Dockerfile
-#     container_name: grpc-java-server
-#     depends_on:
-#       postgres:
-#         condition: service_healthy
-#     ports:
-#       - "50051:50051"
-#     environment:
-#       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-container:5432/flightflexdb
-#       SPRING_DATASOURCE_USERNAME: flight
-#       SPRING_DATASOURCE_PASSWORD: flex
-#     command: ["java", "-jar", "/app/FlightFlex-1.0-SNAPSHOT.jar"]
+  database:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: post
+      POSTGRES_DB: flightflexdb
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    networks:
+      - flightflex-network
 
-# volumes:
-#   postgres_data:
-#     #
-#     #
-#     #
-# #Container
-# # 6c4d60ad6147f709811fb00a29650f870684d6fc9e47329f9bcee241ecd37602
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    networks:
+      - flightflex-network
 
+networks:
+  flightflex-network:
+    driver: bridge

@@ -90,5 +90,6 @@ tasks.withType(JavaCompile) {
 jar {
     enabled = true
     archiveBaseName.set('FlightFlex')
-    archiveVersion.set('1.0.0')
+    archiveVersion.set("")
+    archiveClassifier.set("")
 }

@@ -20,7 +20,8 @@ public class FlightFlexController {
 
     public FlightFlexController() {
         ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("localhost", 50051)
+                .forAddress("database", 5432)
+                // .forAddress("localhost", 50051)
                 .usePlaintext()
                 .build();
             this.adStub = AdRecommendationsServiceGrpc.newBlockingStub(channel);
