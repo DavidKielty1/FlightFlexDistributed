@@ -18,7 +18,7 @@ const AdRecommendations = () => {
 
   return (
     <div className="main-body">
-      <h1>Ad Recommendations!!</h1>
+      <h1>Ad Recommendations</h1>
       <input
         type="text"
         placeholder="Enter User ID"
