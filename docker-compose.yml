@@ -2,6 +2,9 @@ services:
   backend:
     build:
       context: ./backend
+    volumes: # Hot Reloading
+      - ./backend:/app # Hot Reloading
+      - /app/target # Hot Reloading
     ports:
       - "8080:8080"
     environment:
@@ -9,6 +12,7 @@ services:
       SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/flightflexdb"
       SPRING_DATASOURCE_USERNAME: "postgres"
       SPRING_DATASOURCE_PASSWORD: "post"
+    command: ["./mvnw", "spring-boot:run"] # Hot Reloading
     depends_on:
       - database
     networks:

@@ -1,12 +1,28 @@
 ## Data Pipelines project.
 
+## _Aims_
+
+-Tailor ad recommendations to users,
+-Give alternative flight recommendations.
+
+### Setup
+
+#### venv
+
+source venv/Scripts/activate
+deactivate
+
+#### Install
+
+requirements.txt
+
 #### _Tech_
 
--Spark Processing.
+-Spark Processing, Pandas
 
 -AWS S3, EMR, EC2.
 
--PostgresQL.
+-PostgresQL, Docker.
 
 -Springboot + grpc AP.
 
@@ -14,7 +30,8 @@
 
 -Monitoring.
 
-#### _Aims_
+#### Flow
 
--Tailor ad recommendations to users,
--Give alternative flight recommendations.
+python mock-date/scripts with pandas initial csv files
+docker for postgres db
+s3 + EMR on AWS. apache spark on clusters
