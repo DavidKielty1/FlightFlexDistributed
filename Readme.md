@@ -22,6 +22,9 @@ React. HTTP Restful requests.
 
 docker-compose up
 (--build)
+
+docker-compose build --no-cache
+
 docker-compose down
 (-v)
 

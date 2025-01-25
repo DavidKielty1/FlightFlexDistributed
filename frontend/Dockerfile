@@ -1,42 +1,28 @@
-# Use Node.js base image
-FROM node:18-slim 
-# as build
+FROM node:18
 
-# Set the working directory
 WORKDIR /app
 
-# Copy only package.json and package-lock.json for caching
 COPY package.json package-lock.json* ./  
 
-# Install dependencies
 RUN npm install
+RUN npm install -g rimraf
 
-# Copy the rest of the application code
 COPY . .
 
-# # FOR PRODUCTION. Changed for hotload
-# Build the React app
-# RUN npm run build
+ARG REACT_APP_BASE_URL
+ENV REACT_APP_BASE_URL=${REACT_APP_BASE_URL}
 
-# # FOR PRODUCTION. Changed for hotload
-# Use an Nginx image to serve the built files
-# FROM nginx:alpine
+ARG WDS_SOCKET_HOST
+ARG CHOKIDAR_USEPOLLING
+ARG WATCHPACK_POLLING
+ENV WDS_SOCKET_HOST=${WDS_SOCKET_HOST}
+ENV CHOKIDAR_USEPOLLING=${CHOKIDAR_USEPOLLING}
+ENV WATCHPACK_POLLING=${WATCHPACK_POLLING}
 
-# # FOR PRODUCTION. Changed for hotload
-# Copy the build output to the Nginx HTML directory
-# COPY --from=build /app/build /usr/share/nginx/html
+RUN rimraf build && rimraf node_modules/.cache
 
-# # FOR PRODUCTION. Changed for hotload
-# # Expose the React app port
-# EXPOSE 80
-
-# # FOR PRODUCTION. Changed for hotload
-# Expose port 3000 (React dev server)
 EXPOSE 3000
 
-# # FOR PRODUCTION. Changed for hotload
-# Start Nginx
-# CMD ["nginx", "-g", "daemon off;"]
-
-# Default command (will be overridden by `command` in docker-compose.yml)
 CMD ["npm", "start"]
+
+
