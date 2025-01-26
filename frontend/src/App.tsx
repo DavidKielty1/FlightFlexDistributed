@@ -1,12 +1,12 @@
 import React from "react";
 import AdRecommendations from "./components/getAds";
-import AlternativeDate from "./components/getAlternativeDates";
+import SearchAlternativeDates from "./components/SearchAlternativeDates";
 
 function App() {
   return (
     <div className="main-body">
       <AdRecommendations />
-      <AlternativeDate />
+      <SearchAlternativeDates />
     </div>
   );
 }

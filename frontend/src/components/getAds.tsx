@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { getAdRecommendations } from "../api/getAdRecommendations"; // Adjust the path to your API file
+import { getAdRecommendations } from "../api/getAdRecommendations";
 
-const AdRecommendations = () => {
-  const [userId, setUserId] = useState("");
-  const [recommendations, setRecommendations] = useState([]);
-  const [error, setError] = useState("");
+const AdRecommendations: React.FC = () => {
+  const [userId, setUserId] = useState<string>("");
+  const [recommendations, setRecommendations] = useState<string[]>([]);
+  const [error, setError] = useState<string>("");
 
   const fetchRecommendations = async () => {
     try {
@@ -15,8 +15,6 @@ const AdRecommendations = () => {
       setError("Failed to fetch recommendations. Please try again.");
     }
   };
-
-  console.log("Rendering AdRecommendations!!");
 
   return (
     <div className="main-body">
