@@ -1,0 +1,89 @@
+origin,destination,average_price,availability,top_airlines
+ATL,AMS,350,Medium,KLM,Delta
+SFO,HKG,900,High,Cathay Pacific,United
+LAX,LON,700,Low,British Airways,Virgin Atlantic
+NYC,PAR,450,Medium,Air France,Delta
+CHI,HKG,850,Low,Cathay Pacific,United
+ATL,BER,400,Medium,Lufthansa,Delta
+SFO,LON,550,Medium,British Airways,United
+LAX,AMS,650,Medium,KLM,Delta
+NYC,HKG,950,High,Cathay Pacific,United
+SFO,AMS,500,Medium,KLM,Delta
+ATL,LON,620,Low,British Airways,Virgin Atlantic
+CHI,LON,490,Medium,Lufthansa,Delta
+SFO,PAR,870,High,Air France,KLM
+ATL,HKG,780,Medium,Cathay Pacific,Delta
+NYC,LON,540,Low,British Airways,United
+LAX,PAR,690,Medium,Air France,KLM
+ATL,PAR,430,Medium,Delta,Lufthansa
+NYC,BER,490,Medium,Lufthansa,Delta
+SFO,BER,710,High,Lufthansa,United
+LAX,HKG,980,High,Cathay Pacific,United
+NYC,AMS,630,Medium,KLM,Delta
+ATL,LON,590,Low,British Airways,Virgin Atlantic
+CHI,AMS,610,Medium,KLM,Delta
+SFO,HKG,930,High,Cathay Pacific,United
+LAX,LON,720,Low,British Airways,Virgin Atlantic
+NYC,PAR,470,Medium,Air France,Delta
+CHI,HKG,870,Low,Cathay Pacific,United
+ATL,BER,450,Medium,Lufthansa,Delta
+SFO,LON,580,Medium,British Airways,United
+LAX,AMS,670,Medium,KLM,Delta
+NYC,HKG,950,High,Cathay Pacific,United
+ATL,AMS,360,Medium,KLM,Delta
+CHI,LON,500,Medium,Lufthansa,Delta
+SFO,PAR,890,High,Air France,KLM
+ATL,HKG,790,Medium,Cathay Pacific,Delta
+NYC,LON,550,Low,British Airways,United
+LAX,PAR,700,Medium,Air France,KLM
+ATL,PAR,450,Medium,Delta,Lufthansa
+NYC,BER,510,Medium,Lufthansa,Delta
+SFO,BER,730,High,Lufthansa,United
+LAX,HKG,990,High,Cathay Pacific,United
+NYC,AMS,650,Medium,KLM,Delta
+ATL,LON,630,Low,British Airways,Virgin Atlantic
+CHI,AMS,630,Medium,KLM,Delta
+SFO,HKG,950,High,Cathay Pacific,United
+LAX,LON,740,Low,British Airways,Virgin Atlantic
+NYC,PAR,490,Medium,Air France,Delta
+CHI,HKG,890,Low,Cathay Pacific,United
+ATL,BER,460,Medium,Lufthansa,Delta
+SFO,LON,600,Medium,British Airways,United
+LAX,AMS,690,Medium,KLM,Delta
+NYC,HKG,970,High,Cathay Pacific,United
+ATL,AMS,370,Medium,KLM,Delta
+CHI,LON,510,Medium,Lufthansa,Delta
+SFO,PAR,910,High,Air France,KLM
+ATL,HKG,810,Medium,Cathay Pacific,Delta
+NYC,LON,570,Low,British Airways,United
+LAX,PAR,710,Medium,Air France,KLM
+ATL,PAR,460,Medium,Delta,Lufthansa
+NYC,BER,520,Medium,Lufthansa,Delta
+SFO,BER,740,High,Lufthansa,United
+LAX,HKG,1010,High,Cathay Pacific,United
+NYC,AMS,660,Medium,KLM,Delta
+ATL,LON,650,Low,British Airways,Virgin Atlantic
+CHI,AMS,640,Medium,KLM,Delta
+SFO,HKG,970,High,Cathay Pacific,United
+LAX,LON,760,Low,British Airways,Virgin Atlantic
+NYC,PAR,510,Medium,Air France,Delta
+CHI,HKG,910,Low,Cathay Pacific,United
+ATL,BER,470,Medium,Lufthansa,Delta
+SFO,LON,620,Medium,British Airways,United
+LAX,AMS,710,Medium,KLM,Delta
+NYC,HKG,990,High,Cathay Pacific,United
+ATL,AMS,380,Medium,KLM,Delta
+CHI,LON,520,Medium,Lufthansa,Delta
+SFO,PAR,930,High,Air France,KLM
+ATL,HKG,830,Medium,Cathay Pacific,Delta
+NYC,LON,590,Low,British Airways,United
+LAX,PAR,730,Medium,Air France,KLM
+ATL,PAR,480,Medium,Delta,Lufthansa
+NYC,BER,530,Medium,Lufthansa,Delta
+SFO,BER,760,High,Lufthansa,United
+LAX,HKG,1030,High,Cathay Pacific,United
+NYC,AMS,680,Medium,KLM,Delta
+ATL,LON,670,Low,British Airways,Virgin Atlantic
+CHI,AMS,650,Medium,KLM,Delta
+SFO,HKG,990,High,Cathay Pacific,United
+LAX,LON,780,Low,British Airways,Virgin Atlantic

@@ -38,8 +38,10 @@ public class FlightFlexController {
 
     @GetMapping("/alternative/date")
     public String getAlternativeDate(@RequestParam int userId) {
+        System.out.println("Fetching alternative date for userId: " + userId);
         UserIdRequest request = UserIdRequest.newBuilder().setUserId(userId).build();
         AlternativeDateResponse response = dateStub.getAlternativeDate(request);
+        System.out.println("Response: " + response.getAlternativeDate());
         return response.getAlternativeDate();
     }
 }

@@ -1,14 +1,25 @@
 package com.example.FlightFlex.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "alternative_dates") // Map to the correct table name
 public class AlternativeDate {
+
     @Id
+    @Column(name = "user_id") 
     private int userId;
-    private String alternativeDate; // Use `LocalDate` if you prefer Java's date type
+    
+    @Column(name = "suggested_date") 
+    private String alternativeDates; 
+
+    @Column(name = "price") 
     private double price;
+
+    @Column(name = "availability") 
     private String availability;
 
     // Getters and Setters
@@ -21,11 +32,11 @@ public class AlternativeDate {
     }
 
     public String getAlternativeDate() {
-        return alternativeDate;
+        return alternativeDates;
     }
 
-    public void setAlternativeDate(String alternativeDate) {
-        this.alternativeDate = alternativeDate;
+    public void setAlternativeDate(String alternativeDates) {
+        this.alternativeDates = alternativeDates;
     }
 
     public double getPrice() {
