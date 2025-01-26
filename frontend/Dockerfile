@@ -21,8 +21,12 @@ ENV WATCHPACK_POLLING=${WATCHPACK_POLLING}
 
 RUN rimraf build && rimraf node_modules/.cache
 
+# RUN npm run build
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+
+CMD ["npm", "run", "serve"]
 
 

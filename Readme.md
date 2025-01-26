@@ -23,8 +23,6 @@ React. HTTP Restful requests.
 docker-compose up
 (--build)
 
-docker-compose build --no-cache
-
 docker-compose down
 (-v)
 
@@ -32,7 +30,6 @@ docker-compose down
 
 cd data/database
 bash setup.sh
-docker exec -i 1c441a95d2cb psql -U postgres -d flightflexdb < table-creation.sql
 
 ### Local:
 
@@ -50,5 +47,5 @@ npm run start
 
 docker ps
 
-docker exec -it 1c441a95d2cb psql -U postgres -d flightflexdb
-docker exec -it flightflexdistributed-database-1 psql -U postgres -d flightflexdb
+docker exec -it {Container_ID} psql -U postgres -d flightflexdb
+docker exec -it {Container Name} psql -U postgres -d flightflexdb

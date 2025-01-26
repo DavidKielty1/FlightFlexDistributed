@@ -15,6 +15,7 @@ const SearchAlternativeDates: React.FC = () => {
   const [alternativeDates, setAlternativeDates] = useState<AlternativeDate[]>(
     []
   );
+
   const [error, setError] = useState<string>("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -78,7 +79,7 @@ const SearchAlternativeDates: React.FC = () => {
         <div>
           <h2>Alternative Dates</h2>
           <ul>
-            {alternativeDates.map((altDate, index) => (
+            {alternativeDates.map((altDate: AlternativeDate, index: number) => (
               <li key={index}>
                 <strong>{altDate.date}</strong>: {altDate.price} (
                 {altDate.availability})
