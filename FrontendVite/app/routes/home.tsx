@@ -1,13 +1,11 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import AdRecommendations from "../components/getAds";
+import SearchAlternativeDates from "../components/SearchAlternativeDates";
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div className="main-body">
+      <AdRecommendations />
+      <SearchAlternativeDates />
+    </div>
+  );
 }

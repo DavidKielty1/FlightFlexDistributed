@@ -38,13 +38,18 @@ services:
   frontend:
     build:
       context: ./FrontendVite
+      target: dev
     ports:
       - "3000:3000"
     volumes:
       - ./FrontendVite:/app
       - /app/node_modules
+      - /app/.vite
     environment:
-      VITE_BASE_URL: "http://localhost:8080"
+      - VITE_BASE_URL=http://localhost:8080
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - VITE_HMR_HOST=localhost
     stdin_open: true
     tty: true
     networks:
