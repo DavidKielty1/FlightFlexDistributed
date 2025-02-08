@@ -1,7 +1,7 @@
 import axios from "axios";
 import { handleApiError } from "../utils/apiError";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:8080";
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:8080";
 
 export interface FlightData {
   origin: string;
