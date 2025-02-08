@@ -3,33 +3,46 @@
     "Frontend": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["--login"],
+      "icon": "globe",
       "color": "terminal.ansiGreen",
-      "cwd": "D:/prog/distributed/FlightFlexDistributed/FrontendVite"
+      "overrideName": true,
+      "cwd": "${workspaceFolder}/FrontendVite"
     },
     "Backend": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["--login"],
+      "icon": "server-process",
       "color": "terminal.ansiBlue",
-      "cwd": "D:/prog/distributed/FlightFlexDistributed/Backend"
+      "overrideName": true,
+      "cwd": "${workspaceFolder}/Backend"
     },
     "Docker": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["--login"],
+      "icon": "terminal-ubuntu",
       "color": "terminal.ansiCyan",
-      "cwd": "D:/prog/distributed/FlightFlexDistributed"
+      "overrideName": true,
+      "cwd": "${workspaceFolder}"
     },
     "PSQL": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["--login"],
+      "icon": "library",
       "color": "terminal.ansiMagenta",
-      "cwd": "D:/prog/distributed/FlightFlexDistributed"
+      "overrideName": true,
+      "cwd": "${workspaceFolder}"
     },
     "Git": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["--login"],
+      "icon": "source-control",
       "color": "terminal.ansiYellow",
-      "cwd": "D:/prog/distributed/FlightFlexDistributed"
+      "overrideName": true,
+      "cwd": "${workspaceFolder}"
     }
   },
-  "terminal.integrated.defaultProfile.windows": "Frontend"
-}
+  "terminal.integrated.defaultProfile.windows": "Frontend",
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.shellHistory": 50
+} 
