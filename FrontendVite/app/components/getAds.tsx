@@ -7,11 +7,14 @@ const AdRecommendations: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   const fetchRecommendations = async () => {
+    console.log("🚀 Starting fetch with userId:", userId);
+
     try {
       setError("");
       const ads = await getAdRecommendations(userId);
       setRecommendations(ads);
     } catch (err) {
+      console.error("❌ Component Error:", err);
       setError("Failed to fetch recommendations. Please try again.");
     }
   };
