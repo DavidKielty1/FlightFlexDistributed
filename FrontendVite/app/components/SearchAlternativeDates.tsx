@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import {
-  getAlternativeDatesByFlight,
-  type FlightData,
-  type AlternativeDate,
-} from "../api/getAlternativeDates";
+import type { FlightData, AlternativeDate } from "../types/flight";
+import { validateFlightSearch } from "../utils/validation";
+import { getAlternativeDatesByFlight } from "../api/getAlternativeDates";
+import { DEFAULT_ERROR } from "../utils/apiError";
 
 const SearchAlternativeDates: React.FC = () => {
   const [formData, setFormData] = useState<FlightData>({
-    origin: "",
-    destination: "",
-    price: "",
-    date: "",
+    origin: "NYC",
+    destination: "LON",
+    price: 500,
+    date: "2025-02-10",
   });
   const [alternativeDates, setAlternativeDates] = useState<AlternativeDate[]>(
     []
@@ -20,19 +19,26 @@ const SearchAlternativeDates: React.FC = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    const finalValue = name === "price" ? Number(value) : value;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: finalValue,
     }));
   };
 
   const fetchAlternativeDates = async () => {
     try {
+      const validationError = validateFlightSearch(formData);
+      if (validationError) {
+        setError(validationError);
+        return;
+      }
+
       setError("");
       const dates = await getAlternativeDatesByFlight(formData);
-      setAlternativeDates(dates || []);
+      setAlternativeDates(dates);
     } catch (err) {
-      setError("Failed to fetch alternative dates. Please try again.");
+      setError(err instanceof Error ? err.message : DEFAULT_ERROR);
     }
   };
 
@@ -73,6 +79,7 @@ const SearchAlternativeDates: React.FC = () => {
           placeholder="Date"
           value={formData.date}
           onChange={handleChange}
+          pattern="\d{4}-\d{2}-\d{2}"
           className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         />
       </div>
@@ -98,7 +105,7 @@ const SearchAlternativeDates: React.FC = () => {
                 className="p-4 bg-gray-50 dark:bg-gray-700 rounded-md shadow-sm flex justify-between items-center"
               >
                 <span className="font-medium text-gray-800 dark:text-white">
-                  {altDate.date}
+                  {altDate.suggestedDate}
                 </span>
                 <span className="text-blue-500 dark:text-blue-400">
                   ${altDate.price}

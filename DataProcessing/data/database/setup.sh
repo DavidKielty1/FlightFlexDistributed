@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define the expected container name
-EXPECTED_CONTAINER_NAME="flightflexdistributed-database-1"
+EXPECTED_CONTAINER_NAME="FF-DB"
 EXPECTED_IMAGE_NAME="postgres:15-alpine"
-EXPECTED_REDIS_NAME="redis-instance"
+EXPECTED_REDIS_NAME="FF-redis"
 
 # Debugging: Verify container detection
 echo "Attempting to find the PostgreSQL container..."
@@ -21,11 +21,8 @@ echo "Found container: $DB_CONTAINER"
 echo "Attempting to find the Redis container..."
 REDIS_CONTAINER=$(docker ps --filter "name=$EXPECTED_REDIS_NAME" --format "{{.ID}}")
 if [ -z "$REDIS_CONTAINER" ]; then
-    echo "Redis container not found. Starting a new one..."
-    REDIS_CONTAINER=$(docker run --name "$EXPECTED_REDIS_NAME" -d redis)
-    echo "Started Redis container: $REDIS_CONTAINER"
-else
-    echo "Found Redis container: $REDIS_CONTAINER"
+    echo "Error: Redis container not found!"
+    exit 1
 fi
 
 # Define SQL files

@@ -4,39 +4,64 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.Date;
 
 @Entity
-@Table(name = "alternative_dates") // Map to the correct table name
+@Table(name = "alternative_dates")
 public class AlternativeDate {
-
     @Id
-    @Column(name = "user_id") 
-    private int userId;
+    @Column(name = "flight_id")
+    private String flightId;
     
-    @Column(name = "suggested_date") 
-    private String alternativeDates; 
-
-    @Column(name = "price") 
+    @Column(name = "suggested_date")
+    @Temporal(TemporalType.DATE)
+    private Date suggestedDate;
+    
+    @Column(name = "origin")
+    private String origin;
+    
+    @Column(name = "destination")
+    private String destination;
+    
+    @Column(name = "price")
     private double price;
-
-    @Column(name = "availability") 
+    
+    @Column(name = "availability")
     private String availability;
 
     // Getters and Setters
-    public int getUserId() {
-        return userId;
+    public String getFlightId() {
+        return flightId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setFlightId(String flightId) {
+        this.flightId = flightId;
     }
 
-    public String getAlternativeDate() {
-        return alternativeDates;
+    public Date getSuggestedDate() {
+        return suggestedDate;
     }
 
-    public void setAlternativeDate(String alternativeDates) {
-        this.alternativeDates = alternativeDates;
+    public void setSuggestedDate(Date suggestedDate) {
+        this.suggestedDate = suggestedDate;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public double getPrice() {

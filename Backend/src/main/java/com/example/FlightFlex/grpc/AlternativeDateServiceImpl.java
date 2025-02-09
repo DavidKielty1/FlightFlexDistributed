@@ -8,6 +8,7 @@ import com.example.FlightFlex.grpc.FlightFlexServiceProto.AlternativeDateRespons
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class AlternativeDateServiceImpl extends AlternativeDateServiceGrpc.AlternativeDateServiceImplBase {
@@ -21,12 +22,16 @@ public class AlternativeDateServiceImpl extends AlternativeDateServiceGrpc.Alter
     @Override
     public void getAlternativeDate(UserIdRequest request, StreamObserver<AlternativeDateResponse> respondStreamObserver) { 
         try {
-            AlternativeDate alternativeDate = alternativeDateService.getAlternativeDateByUserId(request.getUserId());
-            AlternativeDateResponse response = alternativeDate != null ?
+            // Use default values for testing
+            List<AlternativeDate> alternatives = alternativeDateService.findCheaperAlternatives(
+                "NYC", "LON", 500.0, "2025-02-08"
+            );
+            
+            AlternativeDateResponse response = alternatives.isEmpty() ?
+                AlternativeDateResponse.newBuilder().build() :
                 AlternativeDateResponse.newBuilder()
-                    .setAlternativeDate(alternativeDate.getAlternativeDate())
-                    .build()
-                : AlternativeDateResponse.newBuilder().build();
+                    .setAlternativeDate(alternatives.get(0).getSuggestedDate().toString())
+                    .build();
 
             respondStreamObserver.onNext(response);
             respondStreamObserver.onCompleted();

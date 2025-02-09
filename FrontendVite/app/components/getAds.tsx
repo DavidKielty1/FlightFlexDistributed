@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { getAdRecommendations } from "../api/getAdRecommendations";
+import { validateUserId } from "../utils/validation";
+import { DEFAULT_ERROR } from "../utils/apiError";
 
 const AdRecommendations: React.FC = () => {
   const [userId, setUserId] = useState<string>("");
@@ -7,15 +9,18 @@ const AdRecommendations: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   const fetchRecommendations = async () => {
-    console.log("🚀 Starting fetch with userId:", userId);
-
     try {
+      const validationError = validateUserId(userId);
+      if (validationError) {
+        setError(validationError);
+        return;
+      }
+
       setError("");
       const ads = await getAdRecommendations(userId);
       setRecommendations(ads);
     } catch (err) {
-      console.error("❌ Component Error:", err);
-      setError("Failed to fetch recommendations. Please try again.");
+      setError(err instanceof Error ? err.message : DEFAULT_ERROR);
     }
   };
 

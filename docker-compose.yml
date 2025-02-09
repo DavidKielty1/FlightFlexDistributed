@@ -2,23 +2,30 @@ services:
   backend:
     build:
       context: ./Backend
+    container_name: FF-BE
     volumes:
       - ./Backend:/app
       - ./gradle-cache:/root/.gradle
     ports:
       - "8080:8080"
     environment:
-      DATABASE_URL: "jdbc:postgresql://database:5432/flightflexdb"
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://database:5432/flightflexdb"
+      DATABASE_URL: "jdbc:postgresql://FF-DB:5432/flightflexdb"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://FF-DB:5432/flightflexdb"
       SPRING_DATASOURCE_USERNAME: "postgres"
       SPRING_DATASOURCE_PASSWORD: "post"
+      REDIS_HOST: "FF-redis"
+      REDIS_PORT: "6379"
     depends_on:
-      - database
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - flightflex-network
 
   database:
     image: postgres:15-alpine
+    container_name: FF-DB
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: post
@@ -35,10 +42,24 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:alpine
+    container_name: FF-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - flightflex-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   frontend:
     build:
       context: ./FrontendVite
       target: dev
+    container_name: FF-FE
     ports:
       - "3000:3000"
     volumes:

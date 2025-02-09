@@ -55,6 +55,13 @@ public class FlightFlexApplication {
             }
         }));
 
-        server.awaitTermination(); // Keep the gRPC server running
+        // Run in separate thread
+        new Thread(() -> {
+            try {
+                server.awaitTermination();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
